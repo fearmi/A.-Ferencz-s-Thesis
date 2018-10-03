@@ -1,0 +1,75 @@
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{multirow}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{graphicx} 
+\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage{morefloats}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage[cmex10]{amsmath}
+\usepackage[justification=centering]{caption}
+\usepackage{fixltx2e}
+\usepackage{etex}
+\usepackage{mathcomp}
+\usepackage{mathtools}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{textcomp}% http://ctan.org/pkg/textcomp
+\usepackage{graphicx}% http://ctan.org/pkg/graphicx
+\usepackage{imakeidx}
+\usepackage{listings}
+\usepackage{afterpage}
+\usepackage{tikz}
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\usepackage{caption}
+\usepackage[final]{pdfpages}
+\captionsetup[table]{name=Table}%Nombre de la tabla
+\setlength{\belowcaptionskip}{-16pt}
+\usepackage[final]{pdfpages}
+\usepackage[thinlines]{easytable}
+
+
+\ifx\du\undefined
+  \newlength{\du}
+\fi
+\setlength{\du}{15\unitlength}
+
+\newenvironment{absolutelynopagebreak}
+  {\par\nobreak\vfil\penalty0\vfilneg
+   \vtop\bgroup}
+  {\par\xdef\tpd{\the\prevdepth}\egroup
+   \prevdepth=\tpd}
+\newcommand\blankpage{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage}
+
+\makeindex[columns=3, title=Alphabetical Index, intoc]
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\setlength{\parskip}{1em}
+
+\usepackage{comment}
+\usepackage{titlesec}
+
+\titleformat{\section}
+  {\normalfont\fontsize{22}{15}\bfseries}{\thesection}{1em}{}
+
+%Borrar
+\usepackage{lipsum}
