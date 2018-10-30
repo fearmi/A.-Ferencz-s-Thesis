@@ -16,39 +16,37 @@ The GCS can be divided into the following components:
     \item \textbf{Ground Computer:} Its the computer or system where the ground station software is executed, also where the downlink of the data link is received.
     \item \textbf{Ground software:} Just as important as the software running onboard the main autopilot board in the air, is the corresponding software on the GCS, providing the human interface for configuration, monitoring, and control of the UAS. The ground software should provide:
     \begin{itemize}
-        \item Compilation tools to produce the airborne software from the configurations and source code
-        \item GUI to control and interact with the UAV(s) during flight as well as mission planning and simulation
-        \item Basic simulator to ease the development of flight plans and verify some airborne code behaviour
-        \item Data logging system with plot-based viewer for real-time and post-flight analysis
+        \item Compilation tools to produce the airborne software from the configurations and source code.
+        \item GUI to control and interact with the UAV(s) during flight as well as mission planning and simulation.
+        \item Basic simulator to ease the development of flight plans and verify some airborne code behaviour.
+        \item Data logging system with plot-based viewer for real-time and post-flight analysis.
         \item Number of utilities for communicating with the UAV and other agents
         \item Number of tools for calibration, etc.
-        \item Control panel GUI for configuration and program management
-        \item Easy method of extending functionality with the Ivy Bus
+        \item Control panel GUI for configuration and program management.
+        \item Easy method of extending functionality with the Ivy Bus.
     \end{itemize}
-    \item \text{Groundside Datalink:} offers possibilities to supervise the UAV flight from the ground. The default one uses a bidirectionnal wireless modem which supports both telemetry (downlink) and telecontrol (uplink). Thanks to this datalink, flight parameters are available in real time and full control of the navigation and tuning of one or several aircraft is possible from the ground station. The ground side of the link usually consists of a matching radio modem, like an XBee, connected to the ground station computer over USB or serial port.
-    \item \text{Groundside Safelink:} The ground side of the safety link usually consists of a radio control transmitter (and safety pilot). It is used to provide manual control of the aircraft,
+    \item \text{Groundside Datalink:} offers possibilities to supervise the UAV flight from the ground. The default one uses a bidirectional wireless modem which supports both telemetry (downlink) and tele-control (uplink). Thanks to this data link, flight parameters are available in real time and full control of the navigation and tuning of one or several aircraft is possible from the ground station. The ground side of the link usually consists of a matching radio modem, like an XBee, connected to the ground station computer over USB or serial port.
+    \item \text{Groundside Safelink:} The ground side of the safety link usually consists of a radio control transmitter (and safety pilot). It is used to provide manual control of the aircraft.
 \end{itemize}
-
-
 \subsubsection{Data link}
-UAS data link is a system of monitoring-control and information transmission. Generally, it consists of the link protocol, the transport channel and the message protocol. It is designed to achieve real-time information exchange between the sensors, GCS and the UAV as well as to handle the information from flying scene situation, command control and mission control.\cite{6305636} The data link can be divided into two: \textit{Uplink} and \textit{Downlink}:
+UAS data link is a system of monitoring-control and information transmission. Generally, it consists of the link protocol, the transport channel and the message protocol. It is designed to achieve real-time information exchange between the sensors, GCS and the UAV as well as to handle the information from flying scene situation, command control, and mission control.\cite{6305636} The data link can be divided into two: \textit{Uplink} and \textit{Downlink}:
 
 \begin{itemize}
-    \item \textbf{Donwlink:}  is used to transmit the information from the UAV to the GCS, including status data, sensor data, and graphic image data. In general, the UAV is controlled mainly through the onboard autopilot, with the GCS being used in monitoring the flight status and handling emergency. \cite{6305636}
+    \item \textbf{Donwlink:}  is used to transmit the information from the UAV to the GCS, including status data, sensor data, and graphics image data. In general, the UAV is controlled mainly through the onboard autopilot, with the GCS being used in monitoring the flight status and handling an emergency. \cite{6305636}
     \item \textbf{Uplinks:} is used to transmit the control information from the GCS to the UAV, such as flight parameters, waypoints information, and command instruction. \cite{6305636}
 \end{itemize}
 
 The UAS transmission channel consists of two parts: the data terminal equipment (DTE) and the wireless channel. DTE, composed by modem, network controllers and cryptographic equipment, is the fundamental but essential unit of the data link. The operating frequencies of data link are usually in HF, VHF, UHF, L, S, C, and K band, and the choice of frequency depends on its entrusted mission and technology system.\cite{6305636}
 
-The radio modem is the most common DTE in the small civilian UAS. It embodies the function of radio transmission, digital modulation and error correction, provides serial transmission with the rate between 9600bps and 19200bps, as well as supports half-duplex or full-duplex communication.\cite{6305636}
+The radio modem is the most common DTE in the small civilian UAS. It embodies the function of radio transmission, digital modulation and error correction, provides a serial transmission with the rate between 9600bps and 19200bps, as well as supports half-duplex or full-duplex communication.\cite{6305636}
 
 There is a third data link in a UAS system called \textit{Safe Link}. A traditional radio control transmitter and receiver pair are used to provide a manual control option for the UAV. The airborne hardware and software support the connection to a standard radio-control receiver. The autopilot reads the output from the R/C receiver on board the aircraft and decides what control mode is desired. When in manual mode, a safety pilot on the ground may use the R/C transmitter to control the aircraft. The fly-by-wire mode provides a reliable method of providing override control even though the autopilot always remains inline between R/C receiver and actuators.\cite{Hattenberger2014UsingTP}
 
 \subsubsection{Airbone segment}
-The airbonne segment is: the aircraft (UAV), its hardware parts including payload and all the embedded software to control the flight (from stabilization to decision making). They key components are:
+The airborne segment is the aircraft (UAV), its hardware parts including payload and all the embedded software to control the flight (from stabilization to decision making). The key components are:
 \begin{itemize}
     \item Autopilot board.
-    \item altitude sensor.
+    \item Altitude sensor.
     \item Inertial Measurment Unit (IMU).
     \item GPS Reciver.
     \item Datalink Radio Modem.
@@ -60,8 +58,8 @@ The airbonne segment is: the aircraft (UAV), its hardware parts including payloa
 \end{itemize}
 For these project, the most relevant components are Autopilot, payload and propulsion system.
 
-\textbf{ Autopilot} or controller board is the system responsible for carrying out all the tasks on the aircraft for the control of the UAV, it can be said that it is the brain of the platform. Its main functions are: Control the propulsion system and the stability of the UAV, manage communication with the control station and execute the instructions of the pilot. The CPU works with other modules for flight management. Collects information from a series of MEMS sensors (Micro-Electromechanical Systems) and receivers of satellite navigation, to estimate the position and orientation of the UAV system. Also
-establishes a communication link with the control station through a module of radio frequency.\cite{Edgar}
+\textbf{ Autopilot} or controller board is the system responsible for carrying out all the tasks on the aircraft for the control of the UAV, it can be said that it is the brain of the platform. Its main functions are: Control the propulsion system and the stability of the UAV, manage communication with the control station and execute the instructions of the pilot. The CPU works with other modules for flight management. Collects information from a series of MEMS sensors (Micro-Electromechanical Systems) and receivers of satellite navigation, to estimate the position and orientation of the UAV system. Also establishes a communication link with the control station through a module of radio frequency.\cite{Edgar}
+
 The autopilot, in conjunction with the other blocks, must have the ability to:
 \begin{itemize}
     \item Measure and estimate the orientation and spatial location of the system.
@@ -71,13 +69,25 @@ The autopilot, in conjunction with the other blocks, must have the ability to:
     \item Control of pilot instructions on the ground.
     \item Operate sensors.
 \end{itemize}
+
+The project will utilize the apogee autopilot. Apogee is the latest in French Engineering and design from E.N.A.C.  This controller uses the latest STM32F4 processor to create a comprehensive autopilot controller board  When you add the incredibly powerful and robust software such as paparazzi.\cite{apogee}
+
+As mention before one of the main task performed by the autopilot is Control and monitoring of the flight route. The guidance, navigation, and control of the plane are implemented utilizing the \textit{Guiding Vector Field (GVF) } algorithm. 
+
+The vector field algorithms are widely used in many
+applications of robotics, such as path-planning, obstacle avoidance, and
+extremum seeking. The main idea is to design a potential vector field, whose integral lines converge to the desired path. In particular, the general description of the vector field for the path following.\cite{GVF}
+
+Guidance vector field approach, which originates in potential field method, provides an efficient and convenient way for the path following problem. It assigns a desired path angle for each point in the space. This desired path angle is usually a function of the coordinates of the corresponding point. Moreover a series of these desired path angles determine a desired trajectory, and by tracking this trajectory, the path following objective can be finally achieved.\cite{7170894}
+
+
+\textbf{Payload} Virtually all kinds of payloads can be attached to the airframe, the only restrictions are usually the weight and size of payloads. Most airframes are equipped with cameras. For these project, the payload will be a camera pointed downwards, placed on the "belly" of the plane. 
+
 The UAV can be categorized by different criteria: 
 \begin{itemize}
     \item \textbf{Propultion type.}
     \item  \textbf{Maximum take-of weight.}
 \end{itemize}
-\textbf{Payload} Virtually all kinds of payloads can be attached to the airframe, the only restrictions are usually the weight and size of payloads. Most airframes are equipped with cameras. For these project, the payload will be a camera pointed downwards, placed on the "belly" of the plane. 
-
 \textbf{Propulsion type} can be divided in to two main categories:
 \begin{itemize}
 \item Fixed-wing UAS: Fixed wing UAS are characterized to have a very simple structure, aerodynamically efficient, that allows to reach high speeds and have a higher efficiency than multirotor platforms, due to the lower power consumption. The landing and take-off procedure present a difficulty to these types of UAS due to the necessity of a runway.
@@ -85,4 +95,5 @@ The UAV can be categorized by different criteria:
 \end{itemize}
 
 \textbf{Maximum take-off Weight}: The first classification to be established for UAS is based on the vehicle size. According to these criteria, they are a brought number of platforms that can be categorized as mini, micro, small or large dimension. Maximum Take-Off Weight (MTOW) is the parameter used to classify the UAS. MTOW is the sum of aircraft weight, maximum payload, and fuel.\cite{ICAO}
+
 
