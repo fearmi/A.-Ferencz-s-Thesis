@@ -188,7 +188,7 @@ The poly survey is a navigation routine, that the aircraft follows to survey the
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Convex_polygon.png}
 \caption{Example of a poly survey convex polygon}
-\label{fig:fixed-wing_UAS}
+\label{fig:Convex_poly}
 \end{figure}
 The entry point is the first corner of the polygon and the point at which the aircraft will begin surveying the area. When in the entry state, the aircraft will circle around the entry point in order to smoothly transition into the first sweep. The aircraft will also keep circling around the entry point until it gets to the waypoint altitude. After the first sweep is made, the direction of the next sweep is determined by the distance of the entry point to the edges of the polygon. If there is more area above the first sweep, the aircraft will sweep up. If there is more area below the first sweep, the aircraft will sweep down.\cite{Poly_survey}
 
@@ -197,7 +197,7 @@ The aircraft will keep sweeping back and forth until it reaches the end of the p
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/FSM.png}
 \caption{Poly survey Finite state machine }
-\label{fig:fixed-wing_UAS}
+\label{fig:FSM}
 \end{figure}
 
 The poly survey algorithm is a multistage finite state machine consisting of five different stages: Entry, Seg, Turn, Ret and Turn 2.

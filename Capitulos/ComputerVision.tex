@@ -57,3 +57,10 @@ Techniques developed for computer vision have many application in the fields of 
     \item Domestic robots.
     \item Image restoration.
 \end{enumerate}
+
+\subsection{JeVois Camera}
+JeVois is a small, open-source, smart machine vision camera that was funded on Kickstarter in early 2017. It runs embedded Linux and can process video at high frame rates using OpenCV algorithms. It can run standalone, or as a USB camera streaming raw or pre-processed video to a host computer for further action. In either case it can communicate to (and be controlled by) other devices via serial port.
+
+The JeVois framework operates as follows: video is captured from the camera sensor, processed on the fly through some machine vision algorithm directly on the camera's own processor, and the results are streamed over USB to a host computer and/or over serial to a micro-controller.
+
+To the host computer, the JeVois smart camera is just another USB camera. Different vision algorithms are selected by changing USB camera resolution and framerate. Users or machines can also interact with the JeVois smart camera, change its settings, or listen for text-based vision outputs over serial link.\cite{JeVois}
