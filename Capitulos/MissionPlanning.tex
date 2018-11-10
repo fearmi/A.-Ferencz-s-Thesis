@@ -190,7 +190,7 @@ The poly survey is a navigation routine, that the aircraft follows to survey the
 \caption{Example of a poly survey convex polygon}
 \label{fig:Convex_poly}
 \end{figure}
-The entry point is the first corner of the polygon and the point at which the aircraft will begin surveying the area. When in the entry state, the aircraft will circle around the entry point in order to smoothly transition into the first sweep. The aircraft will also keep circling around the entry point until it gets to the waypoint altitude. After the first sweep is made, the direction of the next sweep is determined by the distance of the entry point to the edges of the polygon. If there is more area above the first sweep, the aircraft will sweep up. If there is more area below the first sweep, the aircraft will sweep down.\cite{Poly_survey}
+The entry point is the first corner of the polygon and the point at which the aircraft will begin surveying the area, as shown in figure \ref{fig:Convex_poly} the first waypoint is  \textit{S1} . When in the entry state, the aircraft will circle around the entry point in order to smoothly transition into the first sweep. The aircraft will also keep circling around the entry point until it gets to the waypoint altitude. After the first sweep is made, the direction of the next sweep is determined by the distance of the entry point to the edges of the polygon. If there is more area above the first sweep, the aircraft will sweep up. If there is more area below the first sweep, the aircraft will sweep down.\cite{Poly_survey}
 
 The aircraft will keep sweeping back and forth until it reaches the end of the polygon. At this point, the aircraft will sweep back up/down the polygon halfway in between the sweeps previously made by the aircraft. 
 \begin{figure}[H]
@@ -202,7 +202,7 @@ The aircraft will keep sweeping back and forth until it reaches the end of the p
 
 The poly survey algorithm is a multistage finite state machine consisting of five different stages: Entry, Seg, Turn, Ret and Turn 2.
 \subsubsection{Entry}
-The first task performed \textit{Entry} is to compute the value of space between lines, numbers of lines and distance between photos, utilizing the equation stated above.  Having these values the algorithms will guide the plane to a circle a point near the entry waypoint until it reaches the desired altitude. As seen in the image \ref{fig:entry_stage}, The plane is climbing while flying in a circle near the entry waypoint WP1
+The first task performed \textit{Entry} is to compute the value of space between lines, numbers of lines and distance between photos, utilizing the equation stated above. Having these values the algorithms will guide the plane to a circle a point near the entry waypoint until it reaches the desired altitude and speed. As seen in the image \ref{fig:entry_stage}, The plane is climbing while flying in a circle near the entry waypoint \textit{S1}
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Entry.png}
@@ -226,3 +226,19 @@ In figure \ref{fig:SEG_stage} the plane is following a straight segment while ta
 \caption{Photo capturing process simulation}
 \label{fig:Photos}
 \end{figure}
+
+\subsubsection{Turn 1}
+In \textit{Turn 1} the aircraft will fly in a circle until it reaches the return angel that its the opposite of the sweeping angles. This is made to have the proper space between lines. Once the aircraft is in the correct orientation the FMS will change to RET stage.
+\subsubsection{RET}.
+\textit{RET} stage will take the aircraft from one side of the convex polygon to the other to continue with the sweeping. Once the aircraft reached the end of the polygon, the FMS will change to Turn 2.
+\subsubsection{Turn 2}
+In \textit{Turn 2} the aircraft will fly in a circle until it reaches the  sweeping angles. At that point the FMS will transition to SEG.
+
+Figure \ref{fig:FMS_example} helps understand the finite stage machine behavior and transition.  The green lines are the SEG stage where the aircraft is sweeping the area and taking photos.  The red segments are trun 1 stage where the plane will circle back to continue the sweeping. the black lines represent the RET where the aircraft fly from one edge of the polygon to the other, and light green lines area the turn 2 stage, where the plane aliens with the polygon to start another sweep 
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/FMS_example.png}
+\caption{Finite state machine stages representation}
+\label{fig:FMS_example}
+\end{figure}
+
