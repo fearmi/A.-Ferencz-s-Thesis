@@ -1,31 +1,31 @@
 \section{Unmanned Aerial Systems}
-In a generic way, an Autonomous Air System is composed of the aground ground station (GS), a communications system and an aerial element. The operation of the system is based on the fact that an operator at the ground control station directs a Datalink the operation of the aircraft based on the information that it transmits to through its sensors. Depending on the performance characteristics of the aircraft such as the ceiling in service, speed, scope, the payment burden of the same, the coverage and transmission capacity of the link data and autonomy, in the sense of decision-making capacity of the UAV, the System operation will vary.\cite{Duran}
+Generically, an Autonomous Air System is composed of the aground ground station (GS), a communications system and an aerial element. The operation of the system is based on the fact that an operator at the ground control station directs a Datalink the operation of the aircraft based on the information that it transmits to through its sensors. Depending on the performance characteristics of the aircraft such as the ceiling in service, speed, scope, the payment burden of the same, the coverage and transmission capacity of the link data and autonomy, in the sense of decision-making capacity of the UAV, the System operation varies.\cite{Duran}
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/UAS_Components.png}
 \caption{UAS Block diagram}
-\label{fig:fixed-wing_UAS}
+\label{fig:block diagram}
 \end{figure}
 
 \subsection{UAS components}
-As describes before there are three main components to a UAS: Ground Control Station (GCS), Data Link and Airframe. This section will present a description of each component 
+As describes before there are three main components to a UAS: Ground Control Station (GCS), Data Link and Airframe. This section presents a description of each component 
 \subsubsection{Ground segment} 
 The ground control station is where an operator interacts with a UAS. It generally consists of several parts, usually providing feedback about UAV activity, allowing command and control of the aircraft and giving a method of override control for the system.
 The GCS can be divided into the following components:
 \begin{itemize}
-    \item \textbf{Ground Computer:} Its the computer or system where the ground station software is executed, also where the downlink of the data link is received.
+    \item \textbf{Ground Computer:} It the computer or system where the ground station software is executed, also where the downlink of the data link is received.
     \item \textbf{Ground software:} Just as important as the software running onboard the main autopilot board in the air, is the corresponding software on the GCS, providing the human interface for configuration, monitoring, and control of the UAS. The ground software should provide:
     \begin{itemize}
         \item Compilation tools to produce the airborne software from the configurations and source code.
         \item GUI to control and interact with the UAV(s) during flight as well as mission planning and simulation.
-        \item Basic simulator to ease the development of flight plans and verify some airborne code behaviour.
+        \item Basic simulator to ease the development of flight plans and verify some airborne code behavior.
         \item Data logging system with plot-based viewer for real-time and post-flight analysis.
         \item Number of utilities for communicating with the UAV and other agents
         \item Number of tools for calibration, etc.
         \item Control panel GUI for configuration and program management.
         \item Easy method of extending functionality with the Ivy Bus.
     \end{itemize}
-    \item \text{Groundside Datalink:} offers possibilities to supervise the UAV flight from the ground. The default one uses a bidirectional wireless modem which supports both telemetry (downlink) and tele-control (uplink). Thanks to this data link, flight parameters are available in real time and full control of the navigation and tuning of one or several aircraft is possible from the ground station. The ground side of the link usually consists of a matching radio modem, like an XBee, connected to the ground station computer over USB or serial port.
+    \item \text{Groundside Datalink:} offers possibilities to supervise the UAV flight from the ground. The default one uses a bidirectional wireless modem which supports both telemetry (downlink) and tele control (uplink). Thanks to this data link, flight parameters are available in real time, and full control of the navigation and tuning of one or several aircraft is possible from the ground station. The ground side of the link usually consists of a matching radio modem, like an XBee, connected to the ground station computer over USB or serial port.
     \item \text{Groundside Safelink:} The ground side of the safety link usually consists of a radio control transmitter (and safety pilot). It is used to provide manual control of the aircraft.
 \end{itemize}
 \subsubsection{Data link}
@@ -47,17 +47,22 @@ The airborne segment is the aircraft (UAV), its hardware parts including payload
 \begin{itemize}
     \item Autopilot board.
     \item Altitude sensor.
-    \item Inertial Measurment Unit (IMU).
-    \item GPS Reciver.
+    \item Inertial Measurement Unit (IMU).
+    \item GPS Receiver.
     \item Datalink Radio Modem.
-    \item RC recivier.
+    \item RC receiver.
     \item Servos.
-    \item Propultion system.
+    \item Propulsion system.
     \item Batteries.
     \item Payload.
 \end{itemize}
 For these project, the most relevant components are Autopilot, payload and propulsion system.
-
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/opterra.jpg}
+\caption{Opterra fixed-wing aircraft}
+\label{fig:Optera}
+\end{figure}
 \textbf{ Autopilot} or controller board is the system responsible for carrying out all the tasks on the aircraft for the control of the UAV, it can be said that it is the brain of the platform. Its main functions are: Control the propulsion system and the stability of the UAV, manage communication with the control station and execute the instructions of the pilot. The CPU works with other modules for flight management. Collects information from a series of MEMS sensors (Micro-Electromechanical Systems) and receivers of satellite navigation, to estimate the position and orientation of the UAV system. Also establishes a communication link with the control station through a module of radio frequency.\cite{Edgar}
 
 The autopilot, in conjunction with the other blocks, must have the ability to:
@@ -70,27 +75,31 @@ The autopilot, in conjunction with the other blocks, must have the ability to:
     \item Operate sensors.
 \end{itemize}
 
-The project will utilize the apogee autopilot. Apogee is the latest in French Engineering and design from E.N.A.C.  This controller uses the latest STM32F4 processor to create a comprehensive autopilot controller board  When you add the incredibly powerful and robust software such as paparazzi.\cite{apogee}
+The project utilizes the apogee autopilot. Apogee is the latest in French Engineering and design from E.N.A.C.  This controller uses the latest STM32F4 processor to create a comprehensive autopilot controller board  When you add the incredibly powerful and robust software such as paparazzi.\cite{apogee}
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/apogee.jpg}
+\caption{Apogee autopilot}
+\label{fig:apogee}
+\end{figure}
+As mention before one of the main task performed by the autopilot is Control and monitoring of the flight route. The guidance, navigation, and control of the plane are implemented utilizing the \textit{Guiding Vector Field (GVF)} algorithm. 
 
-As mention before one of the main task performed by the autopilot is Control and monitoring of the flight route. The guidance, navigation, and control of the plane are implemented utilizing the \textit{Guiding Vector Field (GVF) } algorithm. 
+The vector field algorithms are widely used in many applications of robotics, such as path-planning, obstacle avoidance, and extremum seeking. The main idea is to design a potential vector field, whose integral lines converge to the desired path. In particular, the general description of the vector field for the path following.\cite{GVF}
 
-The vector field algorithms are widely used in many
-applications of robotics, such as path-planning, obstacle avoidance, and
-extremum seeking. The main idea is to design a potential vector field, whose integral lines converge to the desired path. In particular, the general description of the vector field for the path following.\cite{GVF}
+Guidance vector field approach, which originates in potential field method, provides an efficient and convenient way for the path following problem. It assigns a desired path angle for each point in the space. This desired path angle is usually a function of the coordinates of the corresponding point. Moreover, a series of these desired path angles determine the desired trajectory, and by tracking this trajectory, the path following objective can be finally achieved.\cite{7170894}
 
-Guidance vector field approach, which originates in potential field method, provides an efficient and convenient way for the path following problem. It assigns a desired path angle for each point in the space. This desired path angle is usually a function of the coordinates of the corresponding point. Moreover a series of these desired path angles determine a desired trajectory, and by tracking this trajectory, the path following objective can be finally achieved.\cite{7170894}
+For fixed-wings, the output of the algorithm can be directly expressed in terms of the bank angle of the UAV to achieve coordinated turns. Furthermore, the algorithm can be tuned offline such that the physical constraints of the UAV, e.g., the maximum bank angle, does not violate in a neighborhood of the desired trajectory.\cite{7942030}
 
-
-\textbf{Payload} Virtually all kinds of payloads can be attached to the airframe, the only restrictions are usually the weight and size of payloads. Most airframes are equipped with cameras. For these project, the payload will be a camera pointed downwards, placed on the "belly" of the plane. 
+\textbf{Payload} Virtually all kinds of payloads can be attached to the airframe, the only restrictions are usually the weight and size of payloads. Most airframes are equipped with cameras. For these project, the payload is a camera pointed downwards, placed on the "belly" of the plane. 
 
 The UAV can be categorized by different criteria: 
 \begin{itemize}
     \item \textbf{Propultion type.}
-    \item  \textbf{Maximum take-of weight.}
+    \item  \textbf{Maximum take-off weight.}
 \end{itemize}
-\textbf{Propulsion type} can be divided in to two main categories:
+\textbf{Propulsion type} can be divided into two main categories:
 \begin{itemize}
-\item Fixed-wing UAS: Fixed wing UAS are characterized to have a very simple structure, aerodynamically efficient, that allows to reach high speeds and have a higher efficiency than multirotor platforms, due to the lower power consumption. The landing and take-off procedure present a difficulty to these types of UAS due to the necessity of a runway.
+\item Fixed-wing UAS: Fixed wing UAS are characterized to have an elementary structure, aerodynamically efficient, that allows to reach high speeds and have a higher efficiency than multirotor platforms, due to the lower power consumption. The landing and take-off procedure present a difficulty to these types of UAS due to the necessity of a runway.
 \item Rotatory wing: They are composed of 2 or more rotor. Its main characteristics are the ability to perform vertical take-off and landings, in addition to having a great maneuverability and flight precision. Its main disadvantage is due to its more complex electronics structure, sacrifice flight autonomy.\cite{Luis_Fernadno}
 \end{itemize}
 

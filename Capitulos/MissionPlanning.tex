@@ -1,8 +1,8 @@
-\section{Mission Planning}
+\section{Flight Planning}
 For UAV, the autonomy is characterized by its level of
-interaction with the operator: the more abstract the operator decisions are, the more autonomous the vehicle is. Mission planning and flight scheduling, computing an appropriate path for the vehicle in order to achieve the objectives of the mission, is one of the main challenges for UAV development in order to increase the autonomy level. Usually, mission planning is used to describe all these tasks\cite{4281723}
+Interaction with the operator: the more abstract the operator decisions are, the more autonomous the vehicle is. Mission planning and flight scheduling, computing an appropriate path for the vehicle to achieve the objectives of the mission, is one of the main challenges for UAV development to increase the autonomy level. Usually, mission planning is used to describe all these tasks\cite{4281723}
 
-The first step in the design is to decide on the scales or its resolution and the requirement accuracy. Once those two requirement are know, the following processes follow:
+The first step in the design is to decide on the scales or its resolution and the required accuracy. Once those two requirements are known, the following processes follow:
 \begin{enumerate}
 \item Planning the aerial photography (developing the flight plan);
 \item Planning the ground controls;
@@ -23,14 +23,14 @@ For the flight plan, the planner needs to know the following information, some o
 When an area is covered by vertical aerial photography, the photographs are usually taken along a series of parallel passes, called \textit{flight strips}. As shown in figure \ref{fig:EndLap}, the photographs are normally exposed in such way that the area covered by each successive photograph along a flight strip duplicates or overlaps part of the ground of previous photo. This is lapping along the flight strip is called \textit{end lap}, and the area coverage common to to an adjacent pair of photographs in a flight strip is called the \textit{stereoscopic overlap area}. the overlapping pair of photo is called \textit{stereopair}\cite{elements_photogrammetry}.
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/EndLap.PNG}
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/End_Lap.png}
 \caption{End lap of photographs in a flight strip}
 \label{fig:EndLap}
 \end{figure}
 Adjacent flight strips area photograph so that there is also a lateral overlapping of ground coverage between strips. This condition shown in figure \ref{fig:SideLap}, is called \textit{side lap}\cite{elements_photogrammetry}.
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/sidelap.PNG}
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Side_overlap.png}
 \caption{Side lap of adjacent flight strips}
 \label{fig:SideLap}
 \end{figure}
@@ -39,7 +39,7 @@ Adjacent flight strips area photograph so that there is also a lateral overlappi
 The flight height H that is need to obtain a given GSD can be computed and depends on the camera focal length, the camera sensor width  (mm), and the image width (pixels).\cite{GSDComputation}
 \begin{figure}[H]
 \centering
-\includegraphics[width=4cm,height=4cm,keepaspectratio]{imagenes/GSD.PNG}
+\includegraphics[width=4cm,height=4cm,keepaspectratio]{imagenes/GSD_Varaible.png}
 \caption{GSD variable definition}
 \label{fig:GSD}
 \end{figure}
@@ -100,7 +100,7 @@ imH      & Image height {[}pixel{]}                                             
 \end{table}
 \begin{figure}[H]
 \centering
-\includegraphics[width=6cm,height=6cm,keepaspectratio]{imagenes/velocity.PNG}
+\includegraphics[width=6cm,height=6cm,keepaspectratio]{imagenes/Velocity.png}
 \caption{Velocity computing variables}
 \label{fig:velocity}
 \end{figure}
@@ -140,14 +140,14 @@ t=x/v=\frac{((imH\cdot GSD)/100)\cdot (1-overlap)}{v}
 For a rectangularly shaped project, always use the smallest dimension of the project area to layout your flight lines. This way it results in fewer flight lines and then less turns between flight lines. In Figure \ref{fig:line_orientaion}, the red lines with arrowheads represent flight lines or strips, while the black dash lines represent the project boundary.
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/flight_path.PNG}
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Fligth_path.png}
 \caption{Correct flight lines orientation}
 \label{fig:line_orientaion}
 \end{figure}
 If you have a digital camera with a rectangular shape CCD array, always choose the largest dimension of the CCD array of the camera to be perpendicular to the flight direction. In Figure \ref{fig:camera_orientaion}, the blue rectangles represent images as taken by a camera with rectangular CCD array. The wider dimension of the array is always configured to be perpendicular to the flight direction\cite{GCP}
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/flight_path_oritentation.PNG}
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Camera_Orientation.png}
 \caption{Correct camera orientation}
 \label{fig:camera_orientaion}
 \end{figure}
@@ -177,22 +177,22 @@ NFL=\frac{width}{SP}+1
 \end{enumerate}
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/flight_lines.PNG}
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Line_layout.png}
 \caption {Flight line layouts}
 \label{fig:flight_lines}
 \end{figure}
 
 \subsection{Poly survey}
-The poly survey is a navigation routine, that the aircraft follows to survey the area of any convex polygon given an entry point, the number of waypoints which define the polygon, the sweep width and the desired orientation of the sweeps.
+The poly survey is a navigation routine that the aircraft follows to survey the area of any convex polygon given an entry point, the number of waypoints which define the polygon, the sweep width and the desired orientation of the sweeps.
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Convex_polygon.png}
 \caption{Example of a poly survey convex polygon}
 \label{fig:Convex_poly}
 \end{figure}
-The entry point is the first corner of the polygon and the point at which the aircraft will begin surveying the area, as shown in figure \ref{fig:Convex_poly} the first waypoint is  \textit{S1} . When in the entry state, the aircraft will circle around the entry point in order to smoothly transition into the first sweep. The aircraft will also keep circling around the entry point until it gets to the waypoint altitude. After the first sweep is made, the direction of the next sweep is determined by the distance of the entry point to the edges of the polygon. If there is more area above the first sweep, the aircraft will sweep up. If there is more area below the first sweep, the aircraft will sweep down.\cite{Poly_survey}
+The entry point is the first corner of the polygon and the point at which the aircraft will begin surveying the area, as shown in figure \ref{fig:Convex_poly} the first waypoint is  \textit{S1} . When in the entry state, the aircraft circles the entry point to smoothly transition into the first sweep. The aircraft keeps circling the entry point until it gets to the waypoint altitude. After finishing the first sweep, the direction of the next sweep is determined by the distance of the entry point to the edges of the polygon. If there is more area above the first sweep, the aircraft sweeps up. If there is more area below the first sweep, the aircraft sweeps down.\cite{Poly_survey}
 
-The aircraft will keep sweeping back and forth until it reaches the end of the polygon. At this point, the aircraft will sweep back up/down the polygon halfway in between the sweeps previously made by the aircraft. 
+The aircraft keeps sweeping back and forth until it reaches the end of the polygon. At this point, the aircraft sweeps back up and down the polygon halfway in between the sweeps previously made by the aircraft. 
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/FSM.png}
@@ -202,20 +202,20 @@ The aircraft will keep sweeping back and forth until it reaches the end of the p
 
 The poly survey algorithm is a multistage finite state machine consisting of five different stages: Entry, Seg, Turn, Ret and Turn 2.
 \subsubsection{Entry}
-The first task performed \textit{Entry} is to compute the value of space between lines, numbers of lines and distance between photos, utilizing the equation stated above. Having these values the algorithms will guide the plane to a circle a point near the entry waypoint until it reaches the desired altitude and speed. As seen in the image \ref{fig:entry_stage}, The plane is climbing while flying in a circle near the entry waypoint \textit{S1}
+The first task performed \textit{Entry} is to compute the value of space between lines, numbers of lines and distance between photos, utilizing the equation stated above. Having these values the algorithms guides the plane to a circle a point near the entry waypoint until it reaches the desired altitude and speed. As seen in the image \ref{fig:entry_stage}, The plane is climbing while flying in a circle near the entry waypoint \textit{S1}
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Entry.png}
-\caption{Simulation of poly survey, entry stage}
+\caption{Simulation of the poly survey, entry stage}
 \label{fig:entry_stage}
 \end{figure}
-If the altitude, position, and orientation of the plane are correct the FMS will change to \textit{Seg}. Before the transition to Seg, the camera will start taking photos with the distance interval that was computed earlier.
+If the altitude, position, and orientation of the plane are correct, the FSM changes to \textit{Seg}. Before the transition to Seg, the camera starts taking photos with the distance interval that was computed earlier.
 \subsubsection{Seg}
-\textit{Seg} is the state where the plane will survey the area under study. The plane will follow a straight line taking photos until it will reach the end of the segment. At that point, the plain will automatically stop taking photos and save them on the memory of the camera and transition to Turn 1.
+\textit{Seg} is the state where the plane surveys the area under study. The plane follows a straight line taking photos until it reaches the end of the segment. At that point, the plain automatically stops taking photos and save them on the memory of the camera and transition to Turn 1.
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/SEG.png}
-\caption{Simulation of poly survey, SEG stage}
+\caption{Simulation of the poly survey, SEG stage}
 \label{fig:SEG_stage}
 \end{figure}
 
@@ -228,17 +228,17 @@ In figure \ref{fig:SEG_stage} the plane is following a straight segment while ta
 \end{figure}
 
 \subsubsection{Turn 1}
-In \textit{Turn 1} the aircraft will fly in a circle until it reaches the return angel that its the opposite of the sweeping angles. This is made to have the proper space between lines. Once the aircraft is in the correct orientation the FMS will change to RET stage.
+In \textit{Turn 1} the aircraft fly in a circle until it reaches the return angel that its the opposite of the sweeping angles. This behavior is made to have the proper space between lines. Once the aircraft is in the correct orientation, the FSM changes to RET stage.
 \subsubsection{RET}.
-\textit{RET} stage will take the aircraft from one side of the convex polygon to the other to continue with the sweeping. Once the aircraft reached the end of the polygon, the FMS will change to Turn 2.
+\textit{RET} stage takes the aircraft from one side of the convex polygon to the other to continue with the sweeping. Once the aircraft reached the end of the polygon, the FSM changes to Turn 2.
 \subsubsection{Turn 2}
-In \textit{Turn 2} the aircraft will fly in a circle until it reaches the  sweeping angles. At that point the FMS will transition to SEG.
+In \textit{Turn 2} the aircraft fly in a circle until it reaches the sweeping angles. At that point, the FSM transitions to SEG.
 
-Figure \ref{fig:FMS_example} helps understand the finite stage machine behavior and transition.  The green lines are the SEG stage where the aircraft is sweeping the area and taking photos.  The red segments are trun 1 stage where the plane will circle back to continue the sweeping. the black lines represent the RET where the aircraft fly from one edge of the polygon to the other, and light green lines area the turn 2 stage, where the plane aliens with the polygon to start another sweep 
+Figure \ref{fig:FSM_example} helps to understand the finite stage machine behavior and transition.  The green lines are the SEG stage where the aircraft is sweeping the area and taking photos.  The red segments are turn 1 stage where the plane circles back to continue the sweeping. the black lines represent the RET where the aircraft fly from one edge of the polygon to the other, and light green lines area the turn 2 stage, where the plane aliens with the polygon to start another sweep 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/FMS_example.png}
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/FSM_example.png}
 \caption{Finite state machine stages representation}
-\label{fig:FMS_example}
+\label{fig:FSM_example}
 \end{figure}
 
