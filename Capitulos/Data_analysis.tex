@@ -1,17 +1,17 @@
 \section{Data analysis}
 This section presents an analysis of the data gathered on the surveying test mission executed on the Odense model airfield
 \subsection{Mission execution}
-This subsection presents an analysis of data gathered of the mission executed, making emphasis on the study of flight precision characteristics such as flight height, flight path, side, and front overlap. 
+This subsection presents an analysis emphasizing on the study of flight precision characteristics such as flight height, flight path, side, and front overlap. 
 \subsubsection{Flight path}
-Using the data logging capabilities of the Apogee, its possible to reconstruct path traveled by the UAV.
+Using the data logging capabilities of the Apogee, its possible to reconstruct the path traveled by the UAV.
 Figure \ref{fig:SimVReal} shows a side by side comparison of the simulation and the real path flown by the UAV. The deviation on the flight its caused by the wind. The effect of the wind on the aircraft capability to follow the design path can have a significant impact on the success of the mission, especially since the fixed-wing UAV cannot hover or fly backward. 
 \begin{figure}[H]
 \centering
-\includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/SimVsreallity.png}
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/SimVsreallity.png}
 \caption{ A: Simulation of surveying mission. B: Surveying mission execution}
 \label{fig:SimVReal}
 \end{figure}
-Using the geolocation of each picture is possible to recreate the UAV path. Figure n shows a line plot of the position of each photo.
+Using the geolocation of each picture is possible to recreate the UAV path. Figure \ref{fig:FielB} shows a line plot of the position of each photo.
 \begin{figure}[H]
 \centering
 \includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/graph.eps}
@@ -35,8 +35,28 @@ B                       & 3               & 2 \%                & 109           
 \caption{Result of front overlap test}
 \label{Table:FrontOverlap} 
 \end{table}
-\subsection{Side overlap}
-The side overlap is closely related to the distance between consecutive strip.  Using the geolocation of each photography is possible to . The spacing between the images should be 7.2 m, taking into consideration the error associated with GPS measurements of +- 4m. 
+\subsubsection{Side overlap}
+The side overlap is closely related to the distance between of pictures on consecutive strips. plotting path flown by the UAV against the error signal of the GVF algorithm, it possible to determine the deviation  error in meters of the UAV trajectory to the designed trajectories. Figure \ref{fig:errorsignalGVF} show the before mentiond plot.
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/StripvsGVF.eps}
+\caption{Flight path vs GVF error}
+\label{fig:errorsignalGVF}
+\end{figure}
+By analyzing the data of the GVF error signal during the surveying segment, it is possible to evaluate the accuracy of the trajectory of the UAV during the mission. Table \ref{Table:errorGVF} shows the GVF error signal trends during the surveying segments.
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+                & \multicolumn{8}{c|}{Flight strip number}               \\ \hline
+Value           & 1    & 2    & 3    & 4    & 5    & 6     & 7    & 8    \\ \hline
+Max {[}m{]}     & 6.70 & 5.80 & 5.53 & 5.63 & 4.80 & 5.71. & 9.00 & 7.52 \\ \hline
+Average {[}m{]} & 3.78 & 3.15 & 3.18 & 2.22 & 2.58 & 3.02  & 3.84 & 3.50 \\ \hline
+Media {[}m{]}   & 4.13 & 3.05 & 3.15 & 1.38 & 1.98 & 2.65  & 3.70 & 3.25 \\ \hline
+\end{tabular}
+\caption{GVF error analysis}
+\label{Table:errorGVF}
+\end{table}
 
 \subsection{Photogrammetric products}
 The image alignment, dense point cloud, and DEM construction were done using Agisoft Photo Scan Pro, and the results of the image processing procedure are shown in images \ref{fig:ResultBprocessing}, table \ref{Table:ResultsB} shown a more comprehensive data analysis of the different parameters of the mission.

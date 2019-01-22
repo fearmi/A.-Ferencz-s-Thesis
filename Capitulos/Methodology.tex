@@ -1,12 +1,176 @@
 \section{Methodology}
+The proposed methodology consists of 4 steps: Mission planning, Execution, Processing, and validation. Each of those phases includes several steps. The general methodology diagram can be found in figure \ref{fig:methodology_Flow}.
+The following section will present a detailed description all the stages and their internal steps
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/Methodology.png}
+\caption{Methodology flow overview}
+\label{fig:methodology_Flow}
+\end{figure}
+\subsection{Module description.}
+This section will give a general overview of each module of the methodology, stating their objective, inputs, and outputs.
+
+\subsubsection{Mission planning}
+Combining the user requirements and characteristics of the camera, surveying area, and atmospheric condition, the mission planning module computes and defines parameters used to design the mission path.
+
+
+\textit{\textbf{Objective:}} Computation and definition of mission design parameters. Also, the integration of both software and hardware for the UAS is done in this module.
+
+\textit{\textbf{Inputs:}} 
+\begin{itemize}
+    \item Front overlap.
+    \item Side overlap.
+    \item GSD.
+    \item Surveying area.
+    \item Camera characteristics.
+    \item Surveying area characteristics.
+    \item Wind condition.
+    \item Temperature.
+    \item Sweep angle.
+\end{itemize}
+
+\textit{\textbf{Outputs:}} 
+\begin{itemize}
+    \item Flight path design program:\begin{itemize}
+        \item Distance between photos.
+        \item Distance between strips.
+        \item Number of photos per stripe.
+        \item Number of photos for all the mission.
+        \item Flight altitude.
+    \end{itemize}
+    \item Flight limitations.
+\end{itemize}
+\subsubsection{System integration.}
+In this module, the system integration takes place; two main tasks are to be performed in this stage, the first one software integration, then hardware integration.
+
+
+\textit{\textbf{Objective:}} Integrate the payload to the UAS system, enabling remote and controlled operation.
+
+\subsubsection{Mission execution}
+Once the mission has been designed and programmed into the UAV is time to execute flight. This module uses as input the outputs of the previous module. The outcome of this module is the images and data log file containing: altitude, longitude, altitude, and attitude information of each picture.
+
+\textit{\textbf{Objective:}} Using the design parameters defined in the planning module the flight is executed to gather the necessary data.
+
+\textit{\textbf{Inputs:}} 
+\begin{itemize}
+    \item Flight path design program.
+\end{itemize}
+
+\textit{\textbf{Outputs:}} 
+\begin{itemize}
+    \item Pictures
+    \item Data log:\begin{itemize}
+        \item Latitude.
+        \item Longitude.
+        \item Yaw.
+        \item pitch.
+        \item Roll.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Data processing}
+Using  Agisoft Photoscan software to performs the processing of images, construction of the model of digital elevation, generation of technical reports, as well as the 3D model from photographs.
+
+\textit{\textbf{Objective:}} Objective: Generate a 3d model and DEM using a set of geo-referenced images, perform the photo-alignment, generate the dense point cloud.
+
+\textit{\textbf{Inputs:}} 
+\begin{itemize}
+    \item Geo-referenced images.
+    \item Attitudes log.
+\end{itemize}
+
+\textit{\textbf{Outputs:}} 
+\begin{itemize}
+    \item Pictures
+    \item Data log:\begin{itemize}
+        \item Report.
+        \item DEM.
+        \item Otrhmosaic.
+    \end{itemize}
+\end{itemize}
+
+
+The next section presents a detailed explanation of the execution of each module of the methodology.
 \subsection{Mission Planing}
-\subsubsection{Aircraft selection}
-\subsubsection{Autopilot and GCS selection}
-\subsubsection{Area of study selection}
-\subsubsection{Flight path design}
-\subsubsection{Hardware selection}
-\subsubsection{Hardware integration}
-\subsubsection{Software integration}
+The first step of the methodology for a photogrammetric mission is the mission planning module, figure \ref{fig:MissionModule} shows an insight into the module flow.
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/Missionplanning.png}
+\caption{Insight into the mission planning module}
+\label{fig:MissionModule}
+\end{figure}
+This module provides all the necessary parameters for a photogrametric mission  with predefined parameters and requisites. The first step is the atmospheric condition check, The execution of a photogrammetric mission is limited to a set of weather condition, this needs to be taken into account because UAV systems should not operate under adverse condition such as rain, heavy winds, and fog due to safety and law concerns. If the climate requirement for the mission is not met the task should be postponed.
+
+\textit{\textbf{Theoretical computation}} of the distance between images and distances between continuous strip give the user a first overview of the scope of the mission and result quality. Using the \textit{Matlab} program (Appendix )  the flight parameters are obtained.
+
+\textit{\textbf{The surveying area inspection and restriction}} module is when the operator defines the interest area, taking in consideration factors like obstacles that will restrict certain maneuvers or procedure. At this point, it is important to comply with the local law and requirements. Appendix 2 shows the updated regulation in Costa Rica. Depending on the requirements of the photogrammetric product the use of ground control points (GCP) with millimetric precision. GCP is used to usually are measured with an RTK system.
+
+\textit{\textbf{Camera adjusment}}\newline
+The cameras must be adjusted in their configuration before each flight, some of the adjustment parameters are the file format, ISO value, speed of the shutter, lens opening. The adjustments are made with the UAV system on the ground.
+
+\textit{\textbf{Mission planning}} is done either the Paparazzi Ground control station and executed in the Apogee, flight controller. These allow the automation of the flight, ensuring a correct plight path trought the area, at a stable height and speed of the UAS, in contrast to the manual mode where errors can be induced in carrying out the trajectory through the path. 
+
+Before entering the execute stage of the methodology is essential to simulate the mission to ensure the correct behavior of the UAV in all moments, taking particular attention that UAV doesn't exceed its flight capabilities. In the stage, the landing procedure is also checked
+\subsection{System integration.}
+The module is divided into stages that are dependent one from the other: hardware integration and software integration.
+
+To be able to perform photogrammetric mission It is essential to develop software capable of interfacing both the autopilot with the camera and camera with the GCS, once the software is developed it necessary to fix the camera to the UAV body and to connect it to properly. Usually, the cameras are controlled over a serial port (UART), or a PWM signal via a physical connection or IR LED. In this project, the camera is connected to autopilot via a UART port. The \textit{Apogee} sends a command to \textit{JeVois} to take a picture,  in that command also is sent the geo-referenced position and UAV attitude.
+
+
 \subsection{Execution}
+In this module the flight takes places, but before flying it is necessary to take specific steps to make sure the UAV is in condition to perform the task. These steps are explained in this section.  Figure \ref{fig:execute} shows an insight into the module flow
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/Execution.png}
+\caption{Insight into the Execution module}
+\label{fig:execute}
+\end{figure}
+\textit{\textbf{Balance check}} \newline
+Correctly balancing the UAV is essential for safe flying, because an incorrect Centre of Gravity (CG or CoG) can potentially result in the plane being quite uncontrollable. Every UAV  has a specific CG position; it's the mean point where all gravitational forces act upon the UAV and the point where the plane balances fore-aft correctly. The CG point is determined during the design stage of the UAV or aircraft and is typically shown on a plan as a disc split into four quadrants
+
+\textit{Balancing procedure} Place the tips of your index or middle fingers under each wing, precisely on the line of the CG. Gently lift the UAV, so it is clear of any surface and let it rest freely on your fingertips.
+A correctly balancing UAV, sitting on your fingertips, will either be level or have the nose pointing slightly downwards. If the tail looks downwards, then the plane is tail heavy, and readjustment is necessary. Figure \ref{fig:Balance} shows the correct balancing of a UAV.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=8cm,height=8cm,keepaspectratio]{imagenes/Balance.png}
+\caption{Correct UAV Balance}
+\label{fig:Balance}
+\end{figure}
+\textit{\textbf{Pre-flight checks}} \newline
+The purpose of pre-flight checks is to ensure that your UAV is in a fit condition to fly and that everything is working as it should be.  Neglecting to carry out the pre-flight checks before you operate the UAV, and something is badly amiss, then an avoidable crash is very likely.  \ref{Appendix:Check} show the pre-flight check list.
+
+\textit{\textbf{Take off}} \newline
+Hand launching a big size UAV is teamwork consisting of two persons: The pilot and the thrower. As for a takeoff, a hand launch needs to be done in to wind to maximize the lift under the wings, as well as the airflow over the control surfaces.
+The thrower needs hold the UAV over his head, While the pilots has the transmitter. When the pilot is ready, he gives the signal to the thrower to start running until the UAV has enough lift. It's important that you launch it firmly so that it's above stalling speed when it leaves the thrower hand. 
+It's also important to try and keep the UAVlevel, and don't point it upwards much. If you do launch it with a very nose-up attitude, the same thing is likely to happen a stall and a crash.
+
+\textit{\textbf{Mission execution}} \newline
+The most crucial stage of the module is the execution of the mission, while the plane is in a fully autonomous mode, using the GCS the user commands the UAV to start the sweep to gather the data.
+
+\textit{\textbf{Landing}} \newline
+Once the UAV finished sweeping the area, the next task to perform is a safe landing. The complete landing circuit, whereby you fly a crosswind leg, turn on to a downwind leg, then a base leg before turning the plane back into the wind and on to final approach. The figure below illustrates this circuit.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textit{\textbf{Data colletion}} \newline
+Once the UAV lands the first thing to do is to disconnect the batteries, the is a critical safety measure, once the power source is detached, it is possible to retrieve the data stored in the camera and the autopilot for further processing. 
+
 \subsection{Processing}
-\subsection{Validation}
+The primary objective of the processing module through Agisoft software
+Photoscan is to perform the construction of the digital elevation model, generating reports, as well as the 3D model from photographs. Figure \ref{fig:DataProcessing} show the general flow of this module.
+\begin{figure}[H]
+\centering
+\includegraphics[width=12cm,height=12cm,keepaspectratio]{imagenes/DataProcessing.png}
+\caption{Data processing module}
+\label{fig:DataProcessing}
+\end{figure}
+The processing module is responsible for generating the 3D model, model of digital elevation from the entry of georeferenced images attitude logs.
+
+\textit{\textbf{Photo alignment}} \newline
+The processing starts with the alignment of photographs, using several image processing algorithms, the software searched for the position and orientation of each image, generating a sparse cloud of points.
+
+\textit{\textbf{Dense point cloud}} \newline
+Before the generation of the point cloud, the alignment and orientation process must have been carried out with the correct projection system according to the locality because various photogrammetric products such as DEMs and orthomosaics depend on the cloud of points 
+
+\textit{\textbf{Digital elevation model creation}} \newline
+Generating the digital elevation model allows the representation of a surface with altitude values to characterize a determined area
