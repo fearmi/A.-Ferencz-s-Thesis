@@ -112,10 +112,26 @@ The cameras must be adjusted in their configuration before each flight, some of 
 
 Before entering the execute stage of the methodology is essential to simulate the mission to ensure the correct behavior of the UAV in all moments, taking particular attention that UAV doesn't exceed its flight capabilities. In the stage, the landing procedure is also checked
 \subsection{System integration.}
-The module is divided into stages that are dependent one from the other: hardware integration and software integration.
+The module is divided into stages that are dependent one from the other: hardware integration and software integration. Figure \ref{fig:Systemintegration} shows a overview of this module.
+\begin{figure}[H]
+\centering
+\includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/Systemintegration.png}
+\caption{System integration module overview}
+\label{fig:Systemintegration}
+\end{figure}
+\textit{\textbf{Protocol selection}}\newline
+Protocol selection
+The first and most crucial step in this module is to identify which ports are available both in the payload (camera) and the autopilot. Usually,  cameras are controlled with PWM signal either by a physical port o over an IR LED; also some cameras have a UART port that can be used to the interface. 
 
-To be able to perform photogrammetric mission It is essential to develop software capable of interfacing both the autopilot with the camera and camera with the GCS, once the software is developed it necessary to fix the camera to the UAV body and to connect it to properly. Usually, the cameras are controlled over a serial port (UART), or a PWM signal via a physical connection or IR LED. In this project, the camera is connected to autopilot via a UART port. The \textit{Apogee} sends a command to \textit{JeVois} to take a picture,  in that command also is sent the geo-referenced position and UAV attitude.
-
+After the protocol is defined, the module has two parallel tasks that need to be executed: Software integration and hardware integration.
+\begin{itemize}
+    \item \textbf{\textit{Software integration:}}Having selected the protocol the next step is to adapt or develop the necessary software both in the autopilot and the camera. In the stage, it is required to design the "message " or command that the autopilot will send the camera. In some cases, it will be necessary to develop software capable of prasing the port to obtain the data.
+     \item \textbf{\textit{Hardware integration:}} The first action to execute in the hardware section is to select the power and data port that will be used to connect the camera; usually autopilots have several types of I/Os, for example, servo ports, UART, I2C or SPI. If the power source of the camera is the autopilot, it is essential to make sure that the power requirements are met for both devices.
+     
+With the physical connection taken care of the next assignment is to fix the camera to UAV body. Regularly the commercial UAV have predefined cutouts to place a camera. When selecting the position, it is critical to making sure the payload does not move during the mission.
+     
+\end{itemize}
+\textit{\textbf{Land test:}} It is crucial to make sure the system is working correctly before executing a mission. Thus the last section of this module is to conduct ground testing.
 
 \subsection{Execution}
 In this module the flight takes places, but before flying it is necessary to take specific steps to make sure the UAV is in condition to perform the task. These steps are explained in this section.  Figure \ref{fig:execute} shows an insight into the module flow

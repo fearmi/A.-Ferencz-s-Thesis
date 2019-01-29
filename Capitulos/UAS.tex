@@ -1,5 +1,5 @@
 \section{Unmanned Aerial Systems}
-Generically, an Autonomous Air System is composed of the aground ground station (GS), a communications system and an aerial element. The operation of the system is based on the fact that an operator at the ground control station directs a Datalink the operation of the aircraft based on the information that it transmits to through its sensors. Depending on the performance characteristics of the aircraft such as the ceiling in service, speed, scope, the payment burden of the same, the coverage and transmission capacity of the link data and autonomy, in the sense of decision-making capacity of the UAV, the System operation varies.\cite{Duran}
+Generically, an Autonomous Air System is composed of the aground ground station (GS), a communications system and an aerial element. The operation of the system is based on the fact that an operator at the ground control station directs a Datalink the operation of the aircraft based on the information that it transmits to through its sensors. Depending on the performance characteristics of the aircraft such as the ceiling in service, speed, scope, the coverage and transmission capacity of the link data and autonomy, and decision-making capacity of the UAV, the System operation varies.\cite{Duran}
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/UAS_Components.png}
@@ -23,7 +23,6 @@ The GCS can be divided into the following components:
         \item Number of utilities for communicating with the UAV and other agents
         \item Number of tools for calibration, etc.
         \item Control panel GUI for configuration and program management.
-        \item Easy method of extending functionality with the Ivy Bus.
     \end{itemize}
     \item \text{Groundside Datalink:} offers possibilities to supervise the UAV flight from the ground. The default one uses a bidirectional wireless modem which supports both telemetry (downlink) and tele control (uplink). Thanks to this data link, flight parameters are available in real time, and full control of the navigation and tuning of one or several aircraft is possible from the ground station. The ground side of the link usually consists of a matching radio modem, like an XBee, connected to the ground station computer over USB or serial port.
     \item \text{Groundside Safelink:} The ground side of the safety link usually consists of a radio control transmitter (and safety pilot). It is used to provide manual control of the aircraft.
@@ -56,7 +55,7 @@ The airborne segment is the aircraft (UAV), its hardware parts including payload
     \item Batteries.
     \item Payload.
 \end{itemize}
-For these project, the most relevant components are Autopilot, payload and propulsion system.
+For these project, the most relevant components are: the Autopilot, payload and propulsion system.
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/opterra.jpg}
