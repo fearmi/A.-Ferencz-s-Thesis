@@ -1,5 +1,5 @@
 \section{Photogrammetry and Unmanned Aerial Systems}
-Generically, an Autonomous Air System (UAS) is composed of a ground station (GS), a communications system and an aerial element (aircraft). The operation of the system is based on the fact that an operator at the ground control station directs a Datalink to operate the aircraft based on the information relayed by aircraft throw its sensors. Depending on the performance characteristics of the aircraft such as service ceiling, speed, scope, coverage, transmission capacity of the data link, autonomy, and decision-making capacity of the UAV, the system operation varies.\cite{Duran}
+Generically, an Autonomous Air System (UAS) is composed of a ground station (GS), a communications system and an aerial element (UAV- Unmanned aerial vehicle). The operation of the system is based on the fact that an operator at the ground control station directs a Datalink to operate the UAV based on the information relayed by UAV throw its sensors. Depending on the performance characteristics of the UAV such as service ceiling, speed, scope, coverage, transmission capacity of the data link, autonomy, and decision-making capacity of the UAV, the system operation varies.\cite{Duran}
 \begin{figure}[H]
 \centering
 \includegraphics[width=15cm,height=15cm,keepaspectratio]{imagenes/UAS_Components.png}
@@ -25,7 +25,7 @@ The GCS can be divided into the following components:
         \item Control panel GUI for configuration and program management.
     \end{itemize}
     \item \text{Groundside Datalink:} offers possibilities to supervise the UAV flight from the ground. By default, it uses a bidirectional wireless modem which supports both telemetry (downlink) and tele control (uplink). Thanks to this data link, flight parameters are available in real time. It is also possible to fully control the navigation and tuning of one, or several air elements from the ground station. The ground side of the link usually consists of a matching radio modem, like an XBee, connected to the ground station computer over USB or serial port.
-    \item \text{Groundside Safelink:} The ground side of the safety link usually consists of a radio control transmitter (and safety pilot). It is used to provide manual control of the aircraft.
+    \item \text{Groundside Safelink:} The ground side of the safety link usually consists of a radio control transmitter (and safety pilot). It is used to provide manual control of the UAV.
 \end{itemize}
 \subsubsection{Data link}
 UAS data link is a system of monitoring-control and information transmission. Generally, it consists of the link protocol, the transport channel and the message protocol. It is designed to achieve real-time information exchange between the sensors, GCS and the UAV as well as to handle the information from flying scene situation, command control, and mission control.\cite{6305636} The data link can be divided into two: \textit{Uplink} and \textit{Downlink}:
@@ -39,10 +39,10 @@ The UAS transmission channel consists of two parts: the data terminal equipment 
 
 The radio modem is the most common DTE in small civilian UAS. It embodies the function of radio transmission, digital modulation and error correction, provides a serial transmission with the rate between 9600 bps and 19200 bps, as well as supports half-duplex or full-duplex communication.\cite{6305636}
 
-There is a third data link in a UAS system called \textit{Safe Link}. A traditional radio control transmitter and receiver pair are used to provide a manual control option to UAV. The airborne hardware and software support the connection to a standard radio-control receiver. The autopilot reads the output from the R/C receiver on board the aircraft and decides what the desire control mode is. When in manual mode, a safety pilot on the ground may use the R/C transmitter to control the aircraft. The fly-by-wire way provides a reliable method of providing override control even though the autopilot always remains inline between R/C receiver and actuators.\cite{Hattenberger2014UsingTP}
+There is a third data link in a UAS system called \textit{Safe Link}. A traditional radio control transmitter and receiver pair are used to provide a manual control option to UAV. The airborne hardware and software support the connection to a standard radio-control receiver. The autopilot reads the output from the R/C receiver on board the UAV and decides what the desire control mode is. When in manual mode, a safety pilot on the ground may use the R/C transmitter to control the UAV. The fly-by-wire way provides a reliable method of providing override control even though the autopilot always remains inline between R/C receiver and actuators.\cite{Hattenberger2014UsingTP}
 
 \subsubsection{Airbone segment}
-The airborne segment is the aircraft (UAV), its hardware parts including payload and all the embedded software to control the flight (from stabilization to decision making). The key components are:
+The airborne segment is the UAV, its hardware parts including payload and all the embedded software to control the flight (from stabilization to decision making). The key components are:
 \begin{itemize}
     \item Autopilot board.
     \item Altitude sensor.
@@ -59,10 +59,10 @@ For this project, the most relevant components are the autopilot, payload, and p
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/opterra.jpg}
-\caption{Opterra fixed-wing aircraft}
+\caption{Opterra fixed-wing UAV}
 \label{fig:Optera}
 \end{figure}
-\textbf{ Autopilot} or controller board, is the system responsible for carrying out all the tasks on the aircraft for the control of the UAV, it can be said that it is the brain of the platform. Its main functions are: Control the propulsion system and the stability of the UAV, manage communication with the control station and execute the instructions of the pilot. The CPU works with other modules for the flight management system, it collects information from a series of MEMS sensors (Micro-Electromechanical Systems) and receivers of satellite navigation status, to estimate the position and orientation of the UAV system. Also establishes a communication link with the control station through a module of radio frequency.\cite{Edgar}
+\textbf{ Autopilot} or controller board, is the system responsible for carrying out all the tasks on the UAV for the control of the UAV, it can be said that it is the brain of the platform. Its main functions are: Control the propulsion system and the stability of the UAV, manage communication with the control station and execute the instructions of the pilot. The CPU works with other modules for the flight management system, it collects information from a series of MEMS sensors (Micro-Electromechanical Systems) and receivers of satellite navigation status, to estimate the position and orientation of the UAV system. Also establishes a communication link with the control station through a module of radio frequency.\cite{Edgar}
 
 The autopilot, in conjunction with the other blocks, must have the ability to:
 \begin{itemize}
@@ -89,7 +89,7 @@ Guidance vector field approach, which originates in a potential field method, pr
 
 For fixed-wings, the output of the algorithm can be directly expressed in terms of the bank angle of the UAV to achieve coordinated turns. Furthermore, the algorithm can be tuned offline such that the physical constraints of the UAV, e.g., the maximum bank angle, does not violate in a neighborhood of the desired trajectory.\cite{7942030}
 
-\textbf{Payload} Virtually all kinds of payloads can be attached to the airframe, the only restrictions usually are the weight and size of payloads. Most airframes are equipped with cameras. For this project, the payload is a camera pointed downwards, placed on the "belly" of the aircraft. 
+\textbf{Payload} Virtually all kinds of payloads can be attached to the airframe, the only restrictions usually are the weight and size of payloads. Most airframes are equipped with cameras. For this project, the payload is a camera pointed downwards, placed on the "belly" of the UAV. 
 
 The UAV can be categorized by different criteria: 
 \begin{itemize}
@@ -102,7 +102,7 @@ The UAV can be categorized by different criteria:
 \item Rotatory wing: They are composed of 2 or more rotors. Its main characteristics are the ability to perform vertical take-off and landings, in addition to having a great maneuverability and flight precision. Its main disadvantage has a more complex electronics structure which sacrifices flight autonomy.\cite{Luis_Fernadno}
 \end{itemize}
 
-\textbf{Maximum take-off Weight}: The first classification to be established for UAS is based on the vehicle size. According to these criteria, they are a high number of platforms that can be categorized as mini, micro, small or large dimension. Maximum Take-Off Weight (MTOW) is the parameter used to classify the UAS. MTOW is the sum of aircraft weight, maximum payload, and power unit.\cite{ICAO}
+\textbf{Maximum take-off Weight}: The first classification to be established for UAS is based on the vehicle size. According to these criteria, they are a high number of platforms that can be categorized as mini, micro, small or large dimension. Maximum Take-Off Weight (MTOW) is the parameter used to classify the UAS. MTOW is the sum of UAV weight, maximum payload, and power unit.\cite{ICAO}
 
 \subsection{Photogrammetry}
 Formally no universal definition defines the term photogrammetry but  can be described as the science that focuses on obtaining  reliable information from objects or surfaces without having physical contact a the same time.\cite{Fotogrametria_digital}
@@ -120,3 +120,9 @@ In many cases, the interpretation of the content of the images goes hand in hand
 
 Photogrammetry allows the reconstruction of an object and the analysis of its characteristics without physical contact with it. Acquisition of information about the surface of the Earth in this ways is known nowadays as remote sensing. Remote sensing embraces all methods of acquiring information about the Earth's surface employing measurement and interpretation of electromagnetic radiation either reflected from or emitted by it. While remote sensing includes that part of photogrammetry which concerns itself one speaks of photogrammetry and not of remote sensing. \cite{Kraus}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Photogram.png}
+\caption{Conceptual outline about the procedure to perform a aerial photogrammetric survey}
+\label{fig:photogrametry}
+\end{figure}
