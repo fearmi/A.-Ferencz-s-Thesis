@@ -2,7 +2,7 @@
 In this chapter, the proposed methodology will be validated, developing a three-dimensional map and a digital elevation model with the Agisoft Photoscan.
 \subsection{Mission planning}
 \textbf{Weather condition checks}\newline
-The day the mission was executed, the weather conditions where are  displayed in table \ref{Table:Weather}
+The day the mission was executed, the weather conditions where are  displayed in table \ref{Table:Weather}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -14,17 +14,16 @@ Wind direction (degrees)       & 180      \\ \hline
 Temperature {[}c{]}            & -1       \\ \hline
 Precipitation {[}mm{]}         & 0        \\ \hline
 \end{tabular}
-\caption{Weather condition for the mission}
+\caption{Weather condition for the mission.}
 \label{Table:Weather}
 \end{table}
 \textbf{Surveying area, Hardware used and Requirement definition}\newline
-\textit{Study area}
 
-The flight test was carried out in the Odense model airfield, situated 20km north Odense City, Denmark. The field has an approximated are of  74400 $m^2$. figure \ref{fig:Airfield} shows a satellite image of the airfield
+The flight test was carried out in the Odense model airfield, situated 20km north Odense City, Denmark. The field has an approximated are of  74400 $m^2$. figure \ref{fig:Airfield} shows a satellite image of the airfield.
 \begin{figure}[H]
 \centering
 \includegraphics[width=6.5cm,height=6.5cm,keepaspectratio]{imagenes/Satellite.png}
-\caption{Satellite view of Odense model airfield}
+\caption{Satellite view of Odense model airfield.}
 \label{fig:Airfield}
 \end{figure}
 
@@ -32,7 +31,7 @@ There are two different study area in the field the one two the left (Field A), 
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm,height=8cm,keepaspectratio]{imagenes/Study_Area.png}
-\caption{Study area for the project}
+\caption{Study area for the project.}
 \label{fig:Study area}
 \end{figure}
 
@@ -47,17 +46,17 @@ B     & 75           & 105          & 7875      & 0                 \\ \hline
 \caption{Study area characteristics}
 \label{table: Area_char}
 \end{table}
-The area where the mission was executed has a row of trees on both sides of the field; this condition generates two mission limitations: The task should be performed with in a minimum flying altitude of 20 m to avoid a collision with the trees, and the lading will be conducted with  crosswind. See figure \ref{fig:ARboles}
+The area where the mission was executed has a row of trees on both sides of the field; this condition generates two mission limitations: The task should be performed with in a minimum flying altitude of 20 m to avoid a collision with the trees, and the lading will be conducted with  crosswind. See figure \ref{fig:ARboles}.
 \begin{figure}[H]
 \centering
 \includegraphics[width=8cm,height=8cm,keepaspectratio,angle=-90]{imagenes/IMG_1122.JPG}
-\caption{Trees on the field sides}
+\caption{Trees on the field sides.}
 \label{fig:ARboles}
 \end{figure}
 \textbf{Hardware description}\newline
 \textit{Ground segment:}
-In this section describes  the hardware used to preform the studies.
-The ground segment hardware is described in table \ref{Table:Ground_Hardware}
+This section describes the hardware used to preform the studies.
+The ground segment hardware is described in table \ref{Table:Ground_Hardware}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -68,13 +67,13 @@ Ground software      & Paparazzi UAS                          \\ \hline
 Ground side data link & Xbee Pro 2.4GHz, 18 dBm (63mW)         \\ \hline
 Ground side safe link  & Futaba T-FHSS 14 Channels               \\ \hline
 \end{tabular}
-\caption{Ground segment hardware}
+\caption{Ground segment hardware.}
 \label{Table:Ground_Hardware}
 \end{table}
 
 
 \textit{Data link:}
-for both up and down link a \textit{XBee Pro S1} was used. the performance specification can be found in table \ref{Table:XBee}
+for both up and down link a \textit{XBee Pro S1} was used. the performance specification can be found in table \ref{Table:XBee}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -86,11 +85,11 @@ RF data rate             & 250000 b/s    \\ \hline
 Receiver sensitivity     & 100 dBm       \\ \hline
 Operating frequency band & 2.4GHz ISM    \\ \hline
 \end{tabular}
-\caption{Data link segment hardware specification}
+\caption{Data link segment hardware specification.}
 \label{Table:XBee}
 \end{table}
 
-\textit{Air segment:} Table \ref{Table:Air_Segment} details the air segment specification 
+\textit{Air segment:} Table \ref{Table:Air_Segment} details the air segment specification.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|}
@@ -108,13 +107,13 @@ Propultion type                      & 1300 Kv brushless motor with a 40A ESC   
 Batteries                            & 3 cell 3300mAh LiPo                                                                                                                                                  \\ \hline
 Paylod                               & \begin{tabular}[c]{@{}c@{}}JeVois smart camera:\\ Focal length: 4.85mm\\ Resolution: 1280x1024\\ Sensor area: 4.13mmx3.28mm\\ Pixel size: 3.25$\mu$mx3.25$\mu$m\end{tabular} \\ \hline
 \end{tabular}
-\caption{Air segment hardware description}
+\caption{Air segment hardware description.}
 \label{Table:Air_Segment}
 \end{table}
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/UASSystem.JPG}
-\caption{UAS system from left to right: Ground segment(Computer), Safe link (Futtaba transmitter), Air bone segment (Opterra 2m)}
+\caption{UAS system from left to right: Ground segment(Computer), Safe link (Futtaba transmitter), Air bone segment (Opterra 2m).}
 \label{fig:UASSystem}
 \end{figure}
 
@@ -134,22 +133,22 @@ Number of photos per line & 19      & 16      \\ \hline
 Number of lines           & 9       & 8       \\ \hline
 Flight altitude            & 50      & 50      \\ \hline
 \end{tabular}
-\caption{Value computation for flight planning}
+\caption{Value computation for flight planning.}
 \label{Table: Valores}
 \end{table}
 \textbf{Camera adjustment}\newline
 A Python program controls JeVois camera, the only setting that can be changed is the resolution of the image. In these study the resolution is 1280 x 1024 pixel, autofocus is turned off, due to the lack of shutter in the camera it is not possible to control the shutter speeds.
 
-\footnote{In this study, the control point and landmark placement is not executed due to lack of proper equipment} 
-\textbf{Flight path and mission simulation}\newline
+\footnote{In this study, the control point and landmark placement is not executed due to lack of proper equipment.} 
+\textbf{Flight path and mission simulation.}\newline
 The simulation of the mission is executed on the Paparazzi Ground Control Station (GCS). Compiling the mission code in NPS mode, it is possible to estimate the plane behavior and path. Figure \ref{fig:bsim} shows the simulation of Field B surveying mission.
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/SimBField.png}
-\caption{B field surveying mission simulation}
+\caption{B field surveying mission simulation.}
 \label{fig:bsim}
 \end{figure}
-The result of the simulation are displayed in table \ref{Table:SimResult}
+The result of the simulation are displayed in table \ref{Table:SimResult}.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|}
@@ -158,24 +157,24 @@ Surveying Field & Number of photos & Number of strips & Execution time [m:s] \\ 
 A               & 125              & 8                & 7:10           \\ \hline
 B               & 146              & 9                & 7:30           \\ \hline
 \end{tabular}
-\caption{Result of surveying mission simulation}
+\caption{Result of surveying mission simulation.}
 \label{Table:SimResult}
 \end{table}
 \subsection{System integration}
 This application takes advantage of the fact the JeVois camera has a UART port, and the possibility to run a Python program that reads the port and take decisions base on the content of the message. Also, there is a free UART in the autopilot.
 
-With the selection of the port and protocol finished, the next step in the system integration process was to develop the necessary software both for the camera and the autopilot. Paparazzi had a pre-existing module that had the capability of both sending and receiving messages. It was necessary to design an instruction to take pictures with the camera and to save data in the log. The structure of the instruction is shown in figure \ref{fig:instruction}. The first part is the instruction is the action to take a picture next, is the GPS information (X, Y, Z) where X is latitude, Y is longitude and Z is height above the ground, and finally yaw, pitch, and roll. The last two elements of the instruction are used to create the log.
+With the selection of the port and protocol finished, the next step in the system integration process was to develop the necessary software both for the camera and the autopilot. Paparazzi had a pre-existing module that had the capability of both sending and receiving messages. It was necessary to design an instruction to take pictures with the camera and to save data in the log. The structure of the instruction is shown in figure \ref{fig:instruction}. The first part of the instruction in this case is, the action to take a picture next, is the GPS information (X, Y, Z) where X is latitude, Y is longitude and Z is height above the ground, and finally yaw, pitch, and roll. The last two elements of the instruction are used to create the log.
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Instruction.png}
-\caption{Structure of the instruction}
+\caption{Structure of the instruction.}
 \label{fig:instruction}
 \end{figure}
-In the hardware side of the integration, the first step was to determine the ports which are going to be used  for the integration. The JeVois camera is unable to draw power from the UART port, so an additional one was required. The Apogee has an auxiliary port that is designed to withstand 500mA continuous current and is short-circuit and thermally protected. The figure shows the consumption of the JeVois camera will taking photos. The power consumption is shown in figure \ref{fig:poweer}
+In the hardware side of the integration, the first step was to determine the ports which are going to be used  for the integration. The JeVois camera is unable to draw power from the UART port, so an additional one was required. The Apogee has an auxiliary port that is designed to withstand 500mA continuous current and is short-circuit and thermally protected. The figure shows the consumption of the JeVois camera will taking photos. The power consumption is shown in figure \ref{fig:poweer}.
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio,angle=90]{imagenes/PowerConsumption.jpg}
-\caption{Power consumption of the JeVois}
+\caption{Power consumption of the JeVois.}
 \label{fig:poweer}
 \end{figure}
 
@@ -183,7 +182,7 @@ The Opeterra 2 has camera a hole cut out in its "belly," but its made for a GoPr
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/Base.jpg}
-\caption{JeVois camera with the 3D printed base}
+\caption{JeVois camera with the 3D printed base.}
 \label{fig:base}
 \end{figure}
 \subsection{Mission execution}
@@ -194,13 +193,13 @@ Figure \ref{fig:SimVReal} shows a side by side comparison of the simulation and 
 \begin{figure}[H]
 \centering
 \includegraphics[width=14cm,height=14cm,keepaspectratio]{imagenes/SimVsreallity.png}
-\caption{ A: Simulation of surveying mission. B: Surveying mission execution}
+\caption{ A: Simulation of surveying mission. B: Surveying mission execution.}
 \label{fig:SimVReal}
 \end{figure}
 Using the geolocation of each picture is possible to recreate the UAV path. Figure \ref{fig:FielB} shows a line plot of the position of each photo.
-\begin{figure}[h]
+\begin{figure}[H]
 \includegraphics[width=\textwidth, height =15cm]{imagenes/strips.eps}
-\caption{ Flight path line plot for surveying mission of field B}
+\caption{ Flight path line plot for surveying mission of field B.}
 \label{fig:FielB}
 \end{figure}
 
@@ -218,7 +217,7 @@ Surveying field         & \multicolumn{2}{c|}{X \textless 3.2} & \multicolumn{2}
 A                       & 6               & 5 \%               & 95                        & 81 \%                      & 17                 & 14\%                & 8              & 126                        \\ \hline
 B                       & 3               & 2 \%                & 109                       & 79 \%                      & 26                 & 19\%                & 9              &  147 \\ \hline
 \end{tabular}
-\caption{Result of front overlap test}
+\caption{Result of front overlap test.}
 \label{Table:FrontOverlap} 
 \end{table}
 \subsubsection{Side overlap}
@@ -226,10 +225,12 @@ The side overlap is closely related to the distance between of pictures on conse
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth,height=16cm]{imagenes/StripvsGVF.eps}
-\caption{Flight path vs GVF error}
+\caption{Flight path vs GVF error signal plot, demonstrating the actual deviation of the flight path.}
 \label{fig:errorsignalGVF}
 \end{figure}
 By analyzing the data of the GVF error signal during the surveying segment, it is possible to evaluate the accuracy of the trajectory of the UAV during the mission. Table \ref{Table:errorGVF} shows the GVF error signal trends during the surveying segments.
+
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -240,7 +241,7 @@ Max {[}m{]}     & 6.70 & 5.80 & 5.53 & 5.63 & 4.80 & 5.71. & 9.00 & 7.52 \\ \hli
 Average {[}m{]} & 3.78 & 3.15 & 3.18 & 2.22 & 2.58 & 3.02  & 3.84 & 3.50 \\ \hline
 Media {[}m{]}   & 4.13 & 3.05 & 3.15 & 1.38 & 1.98 & 2.65  & 3.70 & 3.25 \\ \hline
 \end{tabular}
-\caption{GVF error analysis}
+\caption{GVF error analysis.}
 \label{Table:errorGVF}
 \end{table}
 
@@ -249,7 +250,7 @@ The image alignment, dense point cloud, and DEM construction were done using Agi
 \begin{figure}[H]
 \centering
 \includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/ResutsB.png}
-\caption{ A: Orthomosaic field B B: DEM field B}
+\caption{ A: Orthomosaic field B B: DEM field B.}
 \label{fig:ResultBprocessing}
 \end{figure}
 
@@ -263,14 +264,14 @@ Altitude reported (m)     & 50         & 21.3         & 57.4       \\ \hline
 GSD (cm/pixel)            & 1.33       & 3.5          & 62.2       \\ \hline
 Coverage area (m2)        & 24000      & 7875         & 69.5       \\ \hline
 \end{tabular}
-\caption{Result of surveying mission over field B}
+\caption{Result of surveying mission over field B.}
 \label{Table:ResultsB}
 \end{table}
 Analyzing the data obtained from the software, the is notable error associated with the photogrammetric product. Although all the images were aligned, this process was not done correctly. Figure \ref{fig:error} shows an example of the error made by the alignment algorithm. The black lines in the figure represent the axel of the image, it is important to mention that all the images where taken while the camera was pointing down.
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm,height=10cm,keepaspectratio]{imagenes/error.png}
-\caption{ Error made during the alignment process}
+\caption{ Error made during the alignment process.}
 \label{fig:error}
 \end{figure}
 
@@ -279,10 +280,10 @@ There are several factors to take into consideration to explain the reasons for 
 \begin{figure}[H]
 \centering
 \includegraphics[width=16cm,height=16cm,keepaspectratio]{imagenes/IMG_62.png}
-\caption{Picture with vignetting from the surveying mission}
+\caption{Picture with vignetting from the surveying mission.}
 \label{fig:vignetting}
 \end{figure}
-Table \ref{Talbe:XYerror} show the error of camera location estimator algorithm. Taking into consideration that the field has a dimension of $X = 75 m$ and $ Y = 105 m$,  this phenomenon is introduced by the poor quality of the JeVois lens and sensor; some times cameras are equipped with compensating software capable of mitigating this effect. Changing the camera to one design for such activities, will remove these effects from the pictures, prompting better results and products
+Table \ref{Talbe:XYerror} show the error of camera location estimator algorithm. Taking into consideration that the field has a dimension of $X = 75 m$ and $ Y = 105 m$,  this phenomenon is introduced by the poor quality of the JeVois lens and sensor; some times cameras are equipped with compensating software capable of mitigating this effect. Changing the camera to one design for such activities, will remove these effects from the pictures, prompting better results and products.
 \begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|}
